@@ -1,0 +1,25 @@
+TARGETS = rsyslog dhcpcd triggerhappy nmbd samba-ad-dc killprocs bootlogs motd binfmt-support sudo apache2 single mysql prosody dbus gogs smbd tightvncserver rsync ntp loadcpufreq cron ssh dphys-swapfile avahi-daemon postfix lightdm cpufrequtils netatalk saned plymouth rmnologin rc.local
+INTERACTIVE = apache2
+apache2: rsyslog
+single: killprocs bootlogs motd
+mysql: rsyslog
+prosody: rsyslog
+dbus: rsyslog
+gogs: rsyslog
+smbd: nmbd
+tightvncserver: rsyslog
+rsync: rsyslog
+ntp: rsyslog
+loadcpufreq: rsyslog
+cron: rsyslog
+ssh: rsyslog
+dphys-swapfile: rsyslog
+avahi-daemon: dbus rsyslog
+postfix: rsyslog mysql
+lightdm: dbus
+cpufrequtils: loadcpufreq
+netatalk: rsyslog
+saned: rsyslog dbus
+plymouth: mysql rsyslog prosody avahi-daemon dbus netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned samba-ad-dc lightdm bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile sudo
+rmnologin: sudo mysql rsyslog prosody avahi-daemon dbus netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned samba-ad-dc lightdm bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile
+rc.local: mysql rsyslog prosody avahi-daemon dbus netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned samba-ad-dc lightdm bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile sudo

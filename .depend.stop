@@ -1,0 +1,11 @@
+TARGETS = plexmediaserver kodi cups-browsed memcached deluged bluetooth fake-hwclock dhcpcd triggerhappy nmbd samba-ad-dc apache2 prosody gogs smbd tightvncserver postfix lightdm netatalk saned plymouth alsa-utils urandom cups mysql avahi-daemon sendsigs rsyslog umountnfs.sh nfs-common rpcbind hwclock.sh networking umountfs umountroot halt reboot
+cups: smbd
+mysql: postfix
+avahi-daemon: cups-browsed saned
+sendsigs: mysql kodi prosody avahi-daemon netatalk cups-browsed memcached triggerhappy apache2 gogs plymouth nmbd tightvncserver postfix saned alsa-utils samba-ad-dc lightdm deluged smbd bluetooth
+rsyslog: mysql sendsigs kodi prosody avahi-daemon netatalk cups-browsed memcached apache2 gogs tightvncserver postfix saned bluetooth cups
+umountnfs.sh: mysql rsyslog kodi prosody sendsigs avahi-daemon netatalk cups-browsed memcached triggerhappy apache2 gogs plymouth nmbd tightvncserver postfix saned alsa-utils samba-ad-dc lightdm deluged smbd bluetooth
+umountfs: mysql kodi rpcbind prosody avahi-daemon netatalk dhcpcd cups-browsed memcached triggerhappy apache2 gogs umountnfs.sh plymouth nmbd tightvncserver postfix saned alsa-utils samba-ad-dc lightdm networking urandom hwclock.sh deluged smbd bluetooth
+umountroot: umountfs fake-hwclock
+halt: umountroot
+reboot: umountroot
