@@ -1,13 +1,16 @@
-TARGETS = rsyslog dhcpcd triggerhappy nmbd samba-ad-dc killprocs bootlogs motd binfmt-support sudo apache2 single mysql prosody dbus gogs smbd tightvncserver rsync ntp loadcpufreq cron ssh dphys-swapfile avahi-daemon postfix lightdm cpufrequtils netatalk saned plymouth rmnologin rc.local
+TARGETS = rsyslog minissdpd dhcpcd triggerhappy nmbd samba-ad-dc killprocs bootlogs motd binfmt-support sudo apache2 single mysql plexmediaserver prosody dbus gogs smbd tightvncserver noip nginx rsync ntp loadcpufreq cron ssh dphys-swapfile avahi-daemon postfix lightdm cpufrequtils netatalk saned plymouth rmnologin rc.local
 INTERACTIVE = apache2
 apache2: rsyslog
 single: killprocs bootlogs motd
 mysql: rsyslog
+plexmediaserver: rsyslog
 prosody: rsyslog
 dbus: rsyslog
 gogs: rsyslog
 smbd: nmbd
 tightvncserver: rsyslog
+noip: rsyslog
+nginx: rsyslog
 rsync: rsyslog
 ntp: rsyslog
 loadcpufreq: rsyslog
@@ -20,6 +23,6 @@ lightdm: dbus
 cpufrequtils: loadcpufreq
 netatalk: rsyslog
 saned: rsyslog dbus
-plymouth: mysql rsyslog prosody avahi-daemon dbus netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned samba-ad-dc lightdm bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile sudo
-rmnologin: sudo mysql rsyslog prosody avahi-daemon dbus netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned samba-ad-dc lightdm bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile
-rc.local: mysql rsyslog prosody avahi-daemon dbus netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned samba-ad-dc lightdm bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile sudo
+plymouth: mysql rsyslog plexmediaserver prosody avahi-daemon dbus minissdpd netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned noip samba-ad-dc lightdm nginx bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile sudo
+rmnologin: sudo mysql rsyslog plexmediaserver prosody avahi-daemon dbus minissdpd netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned noip samba-ad-dc lightdm nginx bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile
+rc.local: mysql rsyslog plexmediaserver prosody avahi-daemon dbus minissdpd netatalk dhcpcd triggerhappy apache2 gogs nmbd smbd tightvncserver postfix saned noip samba-ad-dc lightdm nginx bootlogs motd rsync ntp loadcpufreq cron binfmt-support cpufrequtils ssh dphys-swapfile sudo

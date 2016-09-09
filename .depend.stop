@@ -1,11 +1,11 @@
-TARGETS = plexmediaserver kodi cups-browsed memcached deluged bluetooth fake-hwclock dhcpcd triggerhappy nmbd samba-ad-dc apache2 prosody gogs smbd tightvncserver postfix lightdm netatalk saned plymouth alsa-utils urandom cups mysql avahi-daemon sendsigs rsyslog umountnfs.sh nfs-common rpcbind hwclock.sh networking umountfs umountroot halt reboot
+TARGETS = kodi port-forward cups-browsed memcached unattended-upgrades deluged bluetooth fake-hwclock minissdpd dhcpcd triggerhappy nmbd samba-ad-dc apache2 plexmediaserver prosody gogs smbd tightvncserver noip nginx postfix lightdm netatalk saned plymouth alsa-utils urandom cups mysql avahi-daemon sendsigs rsyslog umountnfs.sh nfs-common rpcbind hwclock.sh networking umountfs umountroot halt reboot
 cups: smbd
 mysql: postfix
 avahi-daemon: cups-browsed saned
-sendsigs: mysql kodi prosody avahi-daemon netatalk cups-browsed memcached triggerhappy apache2 gogs plymouth nmbd tightvncserver postfix saned alsa-utils samba-ad-dc lightdm deluged smbd bluetooth
-rsyslog: mysql sendsigs kodi prosody avahi-daemon netatalk cups-browsed memcached apache2 gogs tightvncserver postfix saned bluetooth cups
-umountnfs.sh: mysql rsyslog kodi prosody sendsigs avahi-daemon netatalk cups-browsed memcached triggerhappy apache2 gogs plymouth nmbd tightvncserver postfix saned alsa-utils samba-ad-dc lightdm deluged smbd bluetooth
-umountfs: mysql kodi rpcbind prosody avahi-daemon netatalk dhcpcd cups-browsed memcached triggerhappy apache2 gogs umountnfs.sh plymouth nmbd tightvncserver postfix saned alsa-utils samba-ad-dc lightdm networking urandom hwclock.sh deluged smbd bluetooth
+sendsigs: mysql kodi port-forward prosody avahi-daemon minissdpd netatalk cups-browsed memcached triggerhappy apache2 gogs unattended-upgrades plymouth nmbd tightvncserver postfix saned noip alsa-utils samba-ad-dc lightdm deluged smbd bluetooth nginx
+rsyslog: mysql sendsigs kodi port-forward prosody avahi-daemon netatalk cups-browsed memcached apache2 gogs tightvncserver postfix saned noip bluetooth nginx cups
+umountnfs.sh: mysql rsyslog kodi port-forward prosody sendsigs avahi-daemon minissdpd netatalk cups-browsed memcached triggerhappy apache2 gogs unattended-upgrades plymouth nmbd tightvncserver postfix saned noip alsa-utils samba-ad-dc lightdm deluged smbd bluetooth nginx
+umountfs: mysql kodi rpcbind port-forward prosody avahi-daemon minissdpd netatalk dhcpcd cups-browsed memcached triggerhappy apache2 gogs unattended-upgrades umountnfs.sh plymouth nmbd tightvncserver postfix saned noip alsa-utils samba-ad-dc lightdm networking urandom hwclock.sh deluged smbd bluetooth nginx
 umountroot: umountfs fake-hwclock
 halt: umountroot
 reboot: umountroot
