@@ -1,11 +1,40 @@
-TARGETS = kodi port-forward cups-browsed memcached unattended-upgrades deluged bluetooth fake-hwclock minissdpd dhcpcd triggerhappy nmbd samba-ad-dc apache2 plexmediaserver prosody gogs smbd tightvncserver noip nginx postfix lightdm netatalk saned plymouth alsa-utils urandom cups mysql avahi-daemon sendsigs rsyslog umountnfs.sh nfs-common rpcbind hwclock.sh networking umountfs umountroot halt reboot
-cups: smbd
-mysql: postfix
-avahi-daemon: cups-browsed saned
-sendsigs: mysql kodi port-forward prosody avahi-daemon minissdpd netatalk cups-browsed memcached triggerhappy apache2 gogs unattended-upgrades plymouth nmbd tightvncserver postfix saned noip alsa-utils samba-ad-dc lightdm deluged smbd bluetooth nginx
-rsyslog: mysql sendsigs kodi port-forward prosody avahi-daemon netatalk cups-browsed memcached apache2 gogs tightvncserver postfix saned noip bluetooth nginx cups
-umountnfs.sh: mysql rsyslog kodi port-forward prosody sendsigs avahi-daemon minissdpd netatalk cups-browsed memcached triggerhappy apache2 gogs unattended-upgrades plymouth nmbd tightvncserver postfix saned noip alsa-utils samba-ad-dc lightdm deluged smbd bluetooth nginx
-umountfs: mysql kodi rpcbind port-forward prosody avahi-daemon minissdpd netatalk dhcpcd cups-browsed memcached triggerhappy apache2 gogs unattended-upgrades umountnfs.sh plymouth nmbd tightvncserver postfix saned noip alsa-utils samba-ad-dc lightdm networking urandom hwclock.sh deluged smbd bluetooth nginx
-umountroot: umountfs fake-hwclock
-halt: umountroot
-reboot: umountroot
+TARGETS = minidlna nginx cups-browsed port-forward unattended-upgrades kodi memcached plexmediaserver deluged bluetooth minissdpd dhcpcd samba-ad-dc triggerhappy nmbd fake-hwclock apache2 vsftpd tightvncserver smbd gogs noip prosody lightdm postfix saned netatalk plymouth urandom alsa-utils cups mysql avahi-daemon sendsigs rsyslog umountnfs.sh nfs-common rpcbind hwclock.sh networking umountfs umountroot halt reboot
+nginx: minidlna
+cups-browsed: minidlna
+port-forward: minidlna
+unattended-upgrades: minidlna
+kodi: minidlna
+memcached: minidlna
+plexmediaserver: minidlna
+deluged: minidlna
+bluetooth: minidlna
+minissdpd: minidlna
+dhcpcd: minidlna
+samba-ad-dc: minidlna
+triggerhappy: minidlna
+nmbd: minidlna
+fake-hwclock: minidlna
+apache2: minidlna
+vsftpd: minidlna
+tightvncserver: minidlna
+smbd: minidlna
+gogs: minidlna
+noip: minidlna
+prosody: minidlna
+lightdm: minidlna
+postfix: minidlna
+saned: minidlna
+netatalk: minidlna
+plymouth: minidlna
+urandom: minidlna
+alsa-utils: minidlna
+cups: smbd minidlna
+mysql: postfix minidlna
+avahi-daemon: cups-browsed saned minidlna
+sendsigs: plymouth minissdpd nginx cups-browsed vsftpd apache2 samba-ad-dc tightvncserver port-forward unattended-upgrades saned lightdm triggerhappy kodi avahi-daemon smbd alsa-utils nmbd postfix memcached gogs noip deluged netatalk bluetooth mysql prosody minidlna
+rsyslog: nginx cups-browsed vsftpd apache2 tightvncserver port-forward saned kodi sendsigs avahi-daemon postfix memcached gogs noip netatalk bluetooth mysql prosody cups minidlna
+umountnfs.sh: plymouth minissdpd nginx cups-browsed vsftpd apache2 samba-ad-dc tightvncserver port-forward unattended-upgrades saned lightdm triggerhappy kodi rsyslog avahi-daemon smbd alsa-utils nmbd postfix memcached gogs noip sendsigs deluged netatalk bluetooth mysql prosody minidlna
+umountfs: urandom plymouth minissdpd nginx cups-browsed vsftpd apache2 dhcpcd samba-ad-dc networking tightvncserver port-forward unattended-upgrades hwclock.sh saned lightdm triggerhappy kodi avahi-daemon smbd alsa-utils nmbd postfix rpcbind memcached umountnfs.sh gogs noip deluged netatalk bluetooth mysql prosody minidlna
+umountroot: umountfs fake-hwclock minidlna
+halt: umountroot minidlna
+reboot: umountroot minidlna
